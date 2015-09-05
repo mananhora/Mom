@@ -1,0 +1,73 @@
+div.bgWrapper {
+	background-color: #2c3e50;
+	width: 510px;
+	height: 100vh;
+	position: absolute;
+}
+
+div.reminder {
+	float: left !important;
+}
+
+span.emailNumber {
+	margin-left: 12rem;
+	border: 1px solid #e74c3c;
+	border-radius: 50%;
+	padding: 5px 9px;
+	color: #FFF;
+}
+
+div.centerFold {
+	float: left !important;
+}
+
+li.userName {
+	margin-left: 18rem;
+}
+
+div.subTitle {
+	margin-left: 1.25rem;
+}
+
+div.emailList {
+	margin-top: 3rem;
+}
+
+div.userImage {
+	background-color: #2c3e50;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+}
+
+svg.reply {
+	height: 31px;
+	width: 36px;
+}
+
+svg.replyReminder {
+	height: 31px;
+	width: 36px;
+}
+
+li.emailAddress {
+	margin-left: 0;
+}
+
+li.time {
+	margin-left: 2rem;
+}
+
+div.replyField {
+	padding-left: 0px;
+}
+
+textarea.input {
+	border-radius: 10px;
+	border: 1px solid #cdcdcd;
+	height: 100px;
+}
+
+a.draftBtn {
+	margin-left: 1rem;
+}
