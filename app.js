@@ -7,7 +7,7 @@ var email = function(replyTime, subject, name) { //EMAIL CLASS
 };
 
 
-var callback = function(data) {
+var callback = function(data) { //callback function for getMessage(..)
     console.log(data.result.snippet);
     var snippet = data.result.snippet;
     var replyTime = null;
@@ -32,14 +32,11 @@ function listMessages() { //gets list of gmail messages
             result = result.concat(resp.messages);
 
             for (var i = 0; i < resp.messages.length; i++) {
-                console.log("message" + resp.messages[i]);
+                //messages list = resp.messages
                 var id = resp.messages[i].id;
-                console.log(id + " id");
                 getMessage(userId, id, callback);
             }
 
-
-            console.log(result.length + " result");
             var nextPageToken = resp.nextPageToken;
             if (nextPageToken) {
                 request = gapi.client.gmail.users.messages.list({
@@ -75,7 +72,7 @@ function listMessages() { //gets list of gmail messages
 
 
 
-function getMessage(userId, messageId, callback) {
+function getMessage(userId, messageId, callback) { //get message-takes in email id (userId) and messageId
     var request = gapi.client.gmail.users.messages.get({
         'userId': userId,
         'id': messageId

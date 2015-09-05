@@ -1,16 +1,16 @@
 //SEND DATA TO TWILIO
 
-function httpGet(theUrl) {
+function httpGet(theUrl) { 
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", theUrl, false); // false for synchronous request
     xmlHttp.send(null);
     return xmlHttp.responseText;
 }
 
-function sendDataTwilio() {
+function sendDataTwilio() { 
     for (var i = 0; i < emailList.length; i++) {
-        email = emailList[i];
-        if (email.replyTime != null) {
+        email = emailList[i];//get email
+        if (email.replyTime != null) { //if the replyTime has been set by the user.
             //send data to twilio...
             var subject = email.subject;
             var time = email.replyTime;
