@@ -1,6 +1,7 @@
 <html>
 
     <head>
+        <script src="http://code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
         <script type="text/javascript">
         // Your Client ID can be retrieved from your project in the Google
         // Developer Console, https://console.developers.google.com
@@ -110,18 +111,30 @@
          * @param  {String} query String used to filter the Messages listed.
          * @param  {Function} callback Function to call when the request is complete.
          */
-      
 
-        function listMessages() { //gets list of gmail messages 
+
+        function listMessages(callback) { //gets list of gmail messages 
             userId = "horamanan@gmail.com";
-            var d = new Date();//get current date
+            console.log(userId);
+            var d = new Date(); //get current date
             var n = d.getDate();
-            n = n-2;
-            query = "after:2015/09/0"+n;
+            n = n - 2;
+            query = "after:2015/09/03";
 
             var getPageOfMessages = function(request, result) {
                 request.execute(function(resp) {
                     result = result.concat(resp.messages);
+                    //for(var i = 0; i<result.length;i++){
+                    console.log(resp);
+                    // }
+                    console.log(resp.messages);
+
+                    for (var i = 0; i < resp.messages.length; i++) {
+                        console.log(resp.messages[i]);
+                        var id = resp.messages[i].id;
+                        getMessage(userId, id, callback);
+                    }
+
                     console.log(result.length + " result");
                     var nextPageToken = resp.nextPageToken;
                     if (nextPageToken) {
@@ -133,7 +146,7 @@
                         getPageOfMessages(request, result);
                     } else {
                         console.log("error");
-                        
+
                     }
                 });
             };
@@ -143,15 +156,36 @@
             });
             getPageOfMessages(initialRequest, []);
         }
+
+        /**
+         * Get Message with given ID.
+         *
+         * @param  {String} userId User's email address. The special value 'me'
+         * can be used to indicate the authenticated user.
+         * @param  {String} messageId ID of Message to get.
+         * @param  {Function} callback Function to call when the request is complete.
+         */
+        function getMessage(userId, messageId, callback) {
+            console.log("getMessage");
+            var request = gapi.client.gmail.users.messages.get({
+                'userId': userId,
+                'id': messageId
+            });
+            var response = request.execute(callback);
+            console.log("request "+request);
+            console.log("response  "+response);
+            console.log("callback done");
+
+        }
         </script>
         <script src="https://apis.google.com/js/client.js?onload=checkAuth">
         </script>
     </head>
 
     <body>
-        <button onclick="listMessages()">Get Emails</button>
-        <p id = "emails list"></p>
-        
+        <input type="text" id="emailid">
+        <button onclick="listMessages(event)">Get Emails</button>
+        <p id="emails list"></p>
         <div id="authorize-div" style="display: none">
             <span>Authorize access to Gmail API</span>
             <!--Button for the user to click to initiate auth sequence -->
