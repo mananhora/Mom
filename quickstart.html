@@ -2,15 +2,23 @@
 
     <head>
         <script src="http://code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
-      
+        <script src="gmailAuth.js"></script>
+        <script src="app.js"></script>
+        <script src="twilio.js"></script>
         <script src="https://apis.google.com/js/client.js?onload=checkAuth">
         </script>
     </head>
 
     <body>
-        <input type="text" id="emailid">
         <!-- INPUT FIELD FOR EMAIL ADDRES -->
+        <input type="text" id="emailid">
+        <!--         button for getting list of emails
+ -->
         <button onclick="listMessages()">Get Emails</button>
+        <button onclick="printList()">Get Emails22</button>
+        <button onclick = "sendDataTwilio()">3</button>
+
+      
         <p id="emails list"></p>
         <div id="authorize-div" style="display: none">
             <span>Authorize access to Gmail API</span>
