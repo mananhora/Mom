@@ -7,14 +7,7 @@ var email = function(replyTime, subject, name) { //EMAIL CLASS
 };
 
 
-var callback = function(data) { //callback function for getMessage(..)
-    console.log(data.result.snippet);
-    var snippet = data.result.snippet;
-    var replyTime = null;
-    var name = null; //get name from google..
-    var message = new email(replyTime, snippet, name);
-    emailList.push(message);
-}
+
 
 
 function listMessages() { //gets list of gmail messages 
@@ -25,7 +18,7 @@ function listMessages() { //gets list of gmail messages
     var d = new Date(); //get current date
     var n = d.getDate();
     n = n - 2;
-    query = "after:2015/09/03";
+    var messagequery = "after:2015/09/0"+n;
 
     var getPageOfMessages = function(request, result) {
         request.execute(function(resp) {
@@ -42,7 +35,7 @@ function listMessages() { //gets list of gmail messages
                 request = gapi.client.gmail.users.messages.list({
                     'userId': userId,
                     'pageToken': nextPageToken,
-                    'q': query
+                    'q': messagequery
                 });
                 getPageOfMessages(request, result);
             } else {
@@ -55,7 +48,7 @@ function listMessages() { //gets list of gmail messages
     };
     var initialRequest = gapi.client.gmail.users.messages.list({
         'userId': userId,
-        'q': query
+        'q': messagequery
     });
     getPageOfMessages(initialRequest, []);
 }
@@ -80,11 +73,23 @@ function getMessage(userId, messageId, callback) { //get message-takes in email 
     request.execute(callback);
 }
 
+var callback = function(data) { //callback function for getMessage()
+    console.log(data.result.snippet);
+    var snippet = data.result.snippet;
+    var replyTime = null;
+    var name = null; //get name from google..
+    var message = new email(replyTime, snippet, name);
+    emailList.push(message);
+}
+
 function printList() {
-    console.log("emailList  " + emailList);
+    // console.log("emailList  " + emailList);
     for(var i = 0; i<emailList.length;i++){
-    	console.log(emailList[i].subject);
+        // console.log(emailList[i].subject);
+        $('#emails_list').append(emailList[i].subject);
     }
+
+    //FOR TESTING-keep until finished
     emailList[0].replyTime="tomorrow";
     emailList[1].replyTime="day after tomorrow";
 }

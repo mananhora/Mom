@@ -3,31 +3,34 @@
     <head>
         <script src="http://code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
         <script src="gmailAuth.js"></script>
-        <script src="app.js"></script>
+        <script src="emails.js"></script>
         <script src="twilio.js"></script>
+        <script src="flights.js"></script>
         <script src="https://apis.google.com/js/client.js?onload=checkAuth">
+        </script>
+        <script type="text/javascript">
+        function run() {
+            // listMessages(); //populates the list of Emails received in the last n days
+            // printList(); //only for testing (console.log stuff)
+            listFlights();
+            // sendDataTwilio(); //send data to Twilio
+        }
         </script>
     </head>
 
     <body>
-        <!-- INPUT FIELD FOR EMAIL ADDRES -->
+        <!-- INPUT FIELD FOR EMAIL ADDRESS -->
         <input type="text" id="emailid">
-        <!--         button for getting list of emails
+        <!--         click button after email entered -->
+        <button onclick="run()"> 3 </button>
+        <!-- Append emails to this
  -->
-        <button onclick="listMessages()">Get Emails</button>
-        <button onclick="printList()">Get Emails22</button>
-        <button onclick = "sendDataTwilio()">3</button>
-
-      
-        <p id="emails list"></p>
+        <p id="emails_list"> </p>
         <div id="authorize-div" style="display: none">
-            <span>Authorize access to Gmail API</span>
+            <span> Authorize access to Gmail API </span>
             <!--Button for the user to click to initiate auth sequence -->
             <button id="authorize-button" onclick="handleAuthClick(event)">
-                Authorize
-            </button>
-        </div>
-        <pre id="output"></pre>
-    </body>
+                Authorize </button>
+        </div> <pre id="output"> </pre> </body>
 
 </html>
