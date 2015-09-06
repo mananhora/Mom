@@ -91,8 +91,8 @@ function listLabels() {
  */
 function appendPre(message) {
     var pre = document.getElementById('output');
-  var textContent = document.createTextNode(message + '\n');
-  pre.appendChild(textContent);
+  // var textContent = document.createTextNode(message + '\n');
+  // pre.appendChild(textContent);
 
 
 }
