@@ -23,15 +23,15 @@ function checkAuth() {
  * @param {Object} authResult Authorization result.
  */
 function handleAuthResult(authResult) {
-    var authorizeDiv = document.getElementById('authorize-div');
+    //var authorizeDiv = document.getElementById('authorize-div');
     if (authResult && !authResult.error) {
         // Hide auth UI, then load client library.
-        authorizeDiv.style.display = 'none';
+        //authorizeDiv.style.display = 'none';
         loadGmailApi();
     } else {
         // Show auth UI, allowing the user to initiate authorization by
         // clicking authorize button.
-        authorizeDiv.style.display = 'inline';
+        //authorizeDiv.style.display = 'inline';
     }
 }
 
@@ -90,9 +90,9 @@ function listLabels() {
  * @param {string} message Text to be placed in pre element.
  */
 function appendPre(message) {
-    var pre = document.getElementById('output');
-    var textContent = document.createTextNode(message + '\n');
-    pre.appendChild(textContent);
+    //var pre = document.getElementById('output');
+    //var textContent = document.createTextNode(message + '\n');
+    //pre.appendChild(textContent);
 
 }
 

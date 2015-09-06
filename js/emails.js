@@ -9,7 +9,7 @@ var email = function(replyTime, subject, name) { //EMAIL CLASS
 
 function listMessages() { //gets list of gmail messages 
     // console.log("client id  " + CLIENT_ID);
-    userId = $('#emailid').val(); //gets the email inputted by the user
+    userId = "horamanan@gmail.com"; //gets the email inputted by the user
 
     //QUERY PARAMETERS TO GET EMAILS FROM LAST TWO DAYS
     var d = new Date(); //get current date
@@ -83,7 +83,7 @@ function printList() {
     // console.log("emailList  " + emailList);
     for(var i = 0; i<emailList.length;i++){
         // console.log(emailList[i].subject);
-        $('#emails_list').append(emailList[i].subject);
+        $('#emails_list').append('<li>'+emailList[i].subject+'</li>');
     }
 
     //FOR TESTING-keep until finished
