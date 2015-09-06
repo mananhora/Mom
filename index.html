@@ -1,0 +1,192 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mom | The Reminder App</title>
+        <link rel="stylesheet" href="foundation/css/foundation.css" />
+        <link rel="stylesheet" type="text/css" href="OurCSS/stylesheet.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+        <script src="foundation/js/vendor/modernizr.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
+        <script src="js/gmailAuth.js"></script>
+        <script src="js/emails.js"></script>
+        <script src="js/twilio.js"></script>
+        <script src="js/flights.js"></script>
+        <script src="https://apis.google.com/js/client.js?onload=checkAuth">
+        </script>
+        <script type="text/javascript">
+        function run() {
+            listMessages(); //populates the list of Emails received in the last n days
+            printList(); //only for testing (console.log stuff)
+            listFlights();
+            generateFlightList();
+            sendDataTwilio(); //send data to Twilio
+        }
+        </script>
+        <script src="https://use.typekit.net/hyk0wwc.js"></script>
+        <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    </head>
+
+    <body>
+
+        <!-- LEFT FOLD -->
+        <div class="bgWrapper">
+        </div>
+        <!--         <input type="text" id="emailid">
+ -->        <div id="authorize-div" style="display: none">
+            <span> Authorize access to Gmail API </span>
+            <!--Button for the user to click to initiate auth sequence -->
+            <button id="authorize-button" onclick="handleAuthClick(event)">
+                Authorize </button>
+        </div> <pre id="output"> </pre>
+        <!-- Logo -->
+        <div class="row leftContent">
+            <div class="large-3 columns">
+                <img src="images/logo.png">
+                <!-- Toggle switch -->
+                <p class="description">For you and your Mom... because she doesn't need to stress about your forgetting stuff anymore</p>
+                <div class="row stationary">
+                    <div class="large-4 columns">Email</div>
+                    <div class="large-4 columns">
+                        <!-- SVG Toggle Switch -->
+                        <a href="reminder.html">
+                            <svg version="1.1" id="toggle" class="toggle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 76 38" enable-background="new 0 0 76 38" xml:space="preserve">
+                                <path id="pathFill" fill="#EF464C" d="M63.1,31.9H12.9C5.8,31.9,0,26.1,0,19v0C0,11.9,5.8,6.1,12.9,6.1h50.2C70.2,6.1,76,11.9,76,19v0
+                  C76,26.1,70.2,31.9,63.1,31.9z" />
+                                <circle id="circleMov" fill="#FFFFFF" cx="19" cy="19" r="19" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="large-4 columns reminder">Reminders</div>
+                </div>
+                <!-- Compose Btn -->
+                <div class="row ajaxChange" id="ajaxChange">
+                    <div class="large-6 columns">
+                        <a href="#" class="button composeBtn" onclick="run()">Compose</a>
+                    </div>
+                </div>
+                <!-- Email List Options -->
+                <div class="row ajaxChange" id="ajaxChange">
+                    <ul class="linkList">
+                        <li class="top">Inbox<span class="emailNumber">1</span></li>
+                        <li>Sent Mail</li>
+                        <li>Drafts</li>
+                        <li>Trash</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- CENTER FOLD -->
+            <div class="large-1 columns ajaxChange" id="ajaxChange"></div>
+            <!-- Emails -->
+            <div class="large-6 large-offset-1 columns centerFold ajaxChange" id="ajaxChange" id="centerFold">
+                <div class="stroke"></div>
+                <!-- Page Title -->
+                <ul class="inline-list listTitle">
+                    <li class="pageTitle">Email</li>
+                    <li class="userName"><span class="signedIn">Signed in as: </span><a href="#">Anas Ashraf</a></li>
+                </ul>
+                <!-- Sub Title -->
+                <div class="subTitle">
+                    <p class="title">Inbox</p>
+                </div>
+                <!-- User Image -->
+                <div class="emailList">
+                    <!-- Email Subject -->
+                    <div class="large-8 columns" id="emails_list">
+                        <p class="subject">Penn Apps Bus Information</p>
+                    </div>
+                    <!-- Reply Btns -->
+                    <div class="large-6 columns" id="replyBtns">
+                        <ul class="inline-list">
+                            <li>
+                                <a href="#">
+                                    <svg version="1.1" id="reply" class="reply" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 31 36" enable-background="new 0 0 31 36" xml:space="preserve">
+                                        <path fill="#CDCDCD" d="M13.9,19.4c0,1.9,0,3.7,0,5.9c-4.7-3.6-9.2-7-13.9-10.5C4.6,11,9.1,7.4,13.8,3.6c0,2.1,0,4,0,6
+                  c1.6,0,3.2,0,4.7,0c6.2-0.2,11.1,3.6,12.2,9.4c1.2,6.1-2.9,12.3-9,13.4c2.2-3,2.7-6.1,0.8-9.3C20.7,19.8,17.6,18.9,13.9,19.4z" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-reveal-id="remindModal">
+                                    <svg version="1.1" id="replyReminder" class="replyReminder" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 31 38" enable-background="new 0 0 31 38" xml:space="preserve">
+                                        <g>
+                                            <path fill="#CBCBCB" d="M15.5,35.4c-8.3,0-15.1-6.8-15.1-15.1c0-8.3,6.8-15.1,15.1-15.1s15.1,6.8,15.1,15.1
+                    C30.6,28.6,23.8,35.4,15.5,35.4z M15.5,8.2c-6.6,0-12,5.4-12,12s5.4,12,12,12c6.6,0,12-5.4,12-12S22.1,8.2,15.5,8.2z" />
+                                        </g>
+                                        <g>
+                                            <rect x="13.9" y="2.1" fill="#CBCBCB" width="3.1" height="4.6" />
+                                        </g>
+                                        <g>
+                                            <path fill="#CBCBCB" d="M19.1,3.6h-7.3c-0.9,0-1.5-0.7-1.5-1.5s0.7-1.5,1.5-1.5h7.3c0.9,0,1.5,0.7,1.5,1.5S20,3.6,19.1,3.6z" />
+                                        </g>
+                                        <g>
+                                            <path fill="#CBCBCB" d="M4.3,36.6c-0.3,0-0.6-0.1-0.9-0.3c-0.7-0.5-0.9-1.5-0.4-2.1l2.9-4c0.5-0.7,1.5-0.9,2.1-0.4
+                    c0.7,0.5,0.9,1.5,0.4,2.1l-2.9,4C5.3,36.3,4.8,36.6,4.3,36.6z" />
+                                        </g>
+                                        <g>
+                                            <path fill="#CBCBCB" d="M26.8,36.6c-0.5,0-1-0.2-1.3-0.6l-2.9-4c-0.5-0.7-0.3-1.7,0.4-2.1c0.7-0.5,1.7-0.3,2.1,0.4l2.9,4
+                    c0.5,0.7,0.3,1.7-0.4,2.1C27.4,36.5,27.1,36.6,26.8,36.6z" />
+                                        </g>
+                                        <g>
+                                            <path fill="#CBCBCB" d="M27.7,9.6L24.9,7c-0.8-0.7-0.8-2-0.1-2.8l0,0c0.7-0.8,2-0.8,2.8-0.1l2.8,2.7c0.8,0.7,0.8,2,0.1,2.8l0,0
+                    C29.7,10.3,28.5,10.4,27.7,9.6z" />
+                                        </g>
+                                        <g>
+                                            <path fill="#CBCBCB" d="M3.3,9.6L6.1,7c0.8-0.7,0.8-2,0.1-2.8l0,0c-0.7-0.8-2-0.8-2.8-0.1L0.6,6.8c-0.8,0.7-0.8,2-0.1,2.8l0,0
+                    C1.3,10.3,2.5,10.4,3.3,9.6z" />
+                                        </g>
+                                        <g>
+                                            <path fill="#CBCBCB" d="M14.6,21.1c0,1,0,2.1,0,3.3c-2.6-2-5.1-3.9-7.7-5.8c2.6-2.1,5.1-4.1,7.7-6.2c0,1.2,0,2.2,0,3.3
+                    c0.9,0,1.8,0,2.6,0c3.4-0.1,6.2,2,6.8,5.2c0.7,3.4-1.6,6.8-5,7.4c1.2-1.7,1.5-3.4,0.4-5.2C18.4,21.3,16.7,20.8,14.6,21.1z" />
+                                        </g>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- RIGHT FOLD -->
+            <div class="large-6 columns ajaxChange" id="ajaxChange">
+                <!-- Email Subject -->
+                <p class="emailSubject">Penn Apps Bus Information</p>
+                <!-- Time and Email Address -->
+                <ul class="inline-list timeList">
+                    <li class="emailAddress">To:<a href=""><span>sampleemail@gmail.com</span></a></li>
+                    <li class="time">11:00AM</li>
+                </ul>
+                <!-- Actual Email -->
+                <p class="email"></p>
+                <!-- Reply Input Field -->
+                <div class="large-12 columns replyField">
+                    <textarea class="input" placeholder="Type your reply here"></textarea>
+                    <a href="#" class="button small sendBtn">Send</a>
+                    <a href="#" class="draftBtn">Save Draft</a>
+                </div>
+            </div>
+        </div>
+        <!-- SET REMINDER MODAL -->
+        <div id="remindModal" class="reveal-modal" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
+            <h2 id="firstModalTitle">Set your reminder.</h2>
+            <p>
+                <input type="time" id="userTime" name="userTime">
+            </p>
+            <p><a href="#" data-reveal-id="thanksModal" class="secondary button remindBtn" onclick="setReplyTime()">Set Reminder</a></p>
+            <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+        <div id="thanksModal" class="reveal-modal" data-reveal aria-labelledby="secondModalTitle" aria-hidden="true" role="dialog">
+            <h2 id="secondModalTitle">Your reminder has been set.</h2>
+            <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+        <script src="foundation/js/vendor/jquery.js"></script>
+        <script src="foundation/js/foundation.min.js"></script>
+        <script>
+        $(document).foundation();
+        </script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenMax.min.js"></script>
+        <script type="text/javascript" src="OurJS/animation.js"></script>
+    </body>
+
+</html>
