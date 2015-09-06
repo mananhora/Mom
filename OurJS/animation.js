@@ -10,8 +10,13 @@ toggleSwitch.onclick = function () {
 		yoyo: true
 	});
 
-	mov_animation.to(pathFill, 0.1, {
+	mov_animation.to(pathFill, 0.5, {
 		fill: '#6cbddd',
 		ease: Elastic.easeInOut
+	});
+	TweenMax.to(circleMov, 0.5, {
+		css: {
+			x: 38
+		}
 	});
 };
