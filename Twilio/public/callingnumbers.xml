@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Response>
+<Say voice="alice" language="en-GB">
+<Pause length="1"/>
+Hey Fadi. 
+<Pause length="1"/>
+Don't forget to reply to your email. 
+</Say>
+<Say voice="man">
+Hey son! It's dad ! Go get shoot them emails son !
+</Say>
+<Pause length="1"/>
+<Say voice="alice" language="en-GB">
+Bye honey 
+</Say>
+</Response>

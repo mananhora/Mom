@@ -1,0 +1,10 @@
+applications:
+- services:
+  - Twilio-yj
+- disk_quota: 1024M
+  host: mummy
+  name: mummy
+  path: .
+  domain: mybluemix.net
+  instances: 1
+  memory: 256M
