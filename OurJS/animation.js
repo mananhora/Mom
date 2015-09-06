@@ -23,13 +23,6 @@ jQuery(document).ready(function() {
 			},
 			// ease: Elastic.easeInOut
 		})
-		.to(moveRight, 0, {
-			css: {
-				right: "-10000px",
-				opacity: 0
-			},
-			ease: Elastic.easeInOut
-		});
 		//Reverse animation
 		toggleSwitch.onclick = function() {
 			if (mov_animation.reversed()) {
@@ -39,20 +32,26 @@ jQuery(document).ready(function() {
 			}
 		};
 
-		//Ajax calling
-		var toLoad = $(this).attr('href') + '#ajaxChange';
-		// $('#ajaxChange').hide('fast', loadContent);
-		// $('#ajaxAdd').remove();
+		// Ajax calling
+		// var toLoad = $(this).attr('href') + moveRight;
+		// $(moveRight).hide('fast', loadContent);
+		// $(moveRight).remove();
 		// $('#ajaxAdd').fadeIn('normal');
-		function loadContent() {
-			$('#ajaxChange').load("http://localhost:8000/Documents/PennApps/Mom/sample.html", showNewContent())
-		}
+		// function loadContent() {
+		// 	$(moveRight).load("reminder.html")
+		// }
+		// loadContent();
+		// $.ajax({url: "http://localhost:8000/Documents/PennApps/Mom/reminder.html", success: function(result) {
+		// 	$(moveRight).html(result);
+		// 	console.log(result);
+		// 	console.log("its working");
+		// }})
 		console.log('1');
-		function showNewContent() {
-			$('#ajaxChange').show();
-		}
+		// function showNewContent() {
+		// 	$('#centerFold').add();
+		// }
 		console.log('2');
-		return false;
+		// return false;
 
 	};
 	console.log('3');
