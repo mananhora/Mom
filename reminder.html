@@ -6,7 +6,10 @@
     <title>Mom | The Reminder App</title>
     <link rel="stylesheet" href="foundation/css/foundation.css" />
     <link rel="stylesheet" type="text/css" href="OurCSS/stylesheet.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
     <script src="foundation/js/vendor/modernizr.js"></script>
+    <script src="https://use.typekit.net/hyk0wwc.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
   </head>
   <body>
   <!-- LEFT FOLD -->
@@ -18,26 +21,27 @@
     <div class="large-3 columns">
       <img src="images/logo.png">
       <!-- Toggle switch -->
+      <p class="description">For you and your Mom... because she doesn't need to stress about your forgetting stuff anymore</p>
       <div class="row stationary">
         <div class="large-4 columns">Email</div>
         <div class="large-4 columns">
           <!-- SVG Toggle Switch -->
-          <svg version="1.1" id="toggle" class="toggle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  viewBox="0 0 76 38" enable-background="new 0 0 76 38" xml:space="preserve">
-            <path fill="#6CBDDD" d="M63.1,31.9H12.9C5.8,31.9,0,26.1,0,19v0C0,11.9,5.8,6.1,12.9,6.1h50.2C70.2,6.1,76,11.9,76,19v0
-              C76,26.1,70.2,31.9,63.1,31.9z"/>
-            <circle fill="#FFFFFF" cx="19" cy="19" r="19"/>
+          <svg version="1.1" id="toggle" class="toggle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="23 -4 76 38" style="enable-background:new 23 -4 76 38;" xml:space="preserve">
+            <path class="pathFill" fill="#6CBDDD" d="M86.1,27.9H35.9C28.8,27.9,23,22.1,23,15l0,0c0-7.1,5.8-12.9,12.9-12.9h50.2C93.2,2.1,99,7.9,99,15l0,0
+              C99,22.1,93.2,27.9,86.1,27.9z"/>
+            <circle class="circleMov" fill="#FFFFFF" cx="80" cy="15" r="19"/>
           </svg>
         </div>
         <div class="large-4 columns reminder">Reminders</div>
       </div>
       <!-- Compose Btn -->
-      <div class="row">
+      <div class="row ajaxAdd" id="ajaxAdd">
         <div class="large-6 columns">
           <a href="#" class="button addBtn" data-reveal-id="addModal">Add</a>
         </div>
       </div>
       <!-- Email List Options -->
-      <div class="row">
+      <div class="row ajaxAdd" id="ajaxAdd">
         <ul class="linkList">
           <li class="reminderTop">Inbox<span class="reminderNumber">1</span></li>
           <li>Sent Mail</li>
@@ -51,7 +55,7 @@
     <!-- CENTER FOLD -->
     <div class="large-1 columns"></div>
     <!-- Emails -->
-    <div class="large-6 large-offset-1 columns centerFold">
+    <div class="large-6 large-offset-1 columns centerFold ajaxAdd" id="ajaxAdd">
       <div class="stroke"></div>
       <!-- Page Title -->
       <ul class="inline-list">
@@ -65,7 +69,7 @@
       <!-- User Image -->
       <div class="reminderList">
         <div class="large-4 columns">
-          <p>4:00 AM</p>
+          <p class="time timeColor">4:00 AM</p>
         </div>
         <!-- Event -->
         <div class="large-6 columns">
@@ -96,7 +100,7 @@
       </div>
 
       <!-- RIGHT FOLD -->
-      <div class="large-6 columns">
+      <div class="large-6 columns ajaxAdd" id="ajaxAdd">
         <!-- Event Title -->
         <p class="reminderTitle">Penn Apps Bus Information</p>
         <!-- Start Time -->

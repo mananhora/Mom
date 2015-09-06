@@ -1,3 +1,19 @@
+/*
+
+COMMON STYLES
+
+*/
+
+a {
+	font-family: 'Roboto Slab', serif !important;
+}
+
+/*
+
+LEFT FOLD
+
+*/
+
 div.bgWrapper {
 	background-color: #2c3e50;
 	width: 25%;
@@ -6,11 +22,20 @@ div.bgWrapper {
 }
 
 div.leftContent {
-	padding-top: 5%;
+	padding-top: 2%;
+}
+
+p.description {
+	color: #FFF;
+	font-family: "lato",sans-serif;
+	font-weight: 300;
+	margin-bottom: 2.125rem;
 }
 
 div.stationary {
 	color: #FFF;
+	font-family: "lato",sans-serif;
+	font-weight: 500;
 }
 
 img {
@@ -25,29 +50,24 @@ span.emailNumber {
 	margin-left: 12rem;
 	border: 1px solid #e74c3c;
 	border-radius: 50%;
-	padding: 5px 9px;
+	padding: 5px 14px;
 	color: #FFF;
 }
 
 ul.linkList {
 	color: #FFF;
+	font-family: 'Roboto Slab', serif;
+	font-size: 18px;
+}
+
+li.top {
+	border-left: 10px solid #e74c3c;
+	padding-left: 20px;
+	font-weight: 700;
 }
 
 div.centerFold {
 	float: left !important;
-}
-
-span.signedIn {
-	margin-right: 5px;
-}
-
-li.userName {
-	margin-left: 18rem;
-	display: flex;
-}
-
-div.subTitle {
-	margin-left: 1.25rem;
 }
 
 div.emailList {
@@ -82,9 +102,11 @@ a.composeBtn {
 	border-radius: 10px;
 	background-color: #e74c3c;
 	width: 250px;
+	font-weight: 700;
+	font-size: 20px;
 }
 
-a.composeBtn:hover {
+a.composeBtn:hover, a.composeBtn:active {
 	background-color: #e74c3c;
 }
 
@@ -94,9 +116,65 @@ div.stroke {
 	float: right;
 }
 
-li.top {
-	border-left: 10px solid #e74c3c;
-	padding-left: 20px;
+ul.listTitle {
+	margin-bottom: 0;
+}
+
+li.pageTitle {
+	font-family: 'Roboto Slab', serif;
+	font-size: 30px;
+	margin-left: 0;
+}
+
+li.userName {
+	margin-top: 18px;
+	margin-left: 15rem;
+	display: flex;
+}
+
+span.signedIn {
+	margin-right: 7px;
+	margin-top: 7px;
+	font-family: 'Roboto Slab', serif;
+	font-size: 12px;
+}
+
+li.userName > a {
+	font-family: "lato",sans-serif;
+	font-weight: 700;
+	font-size: 18px;
+}
+
+div.subTitle {
+	font-family: 'Roboto Slab', serif;
+	border-bottom: 1px solid #cdcdcd;
+}
+
+#emails_list {
+	padding-left: 0;
+}
+
+p.subject {
+	font-family: "lato",sans-serif;
+	font-weight: 700;
+	font-size: 20px;
+}
+
+/*
+
+RIGHT FOLD
+
+*/
+
+p.emailSubject {
+	font-family: "lato",sans-serif;
+	font-weight: 700;
+	font-size: 25px;
+}
+
+ul.timeList {
+	font-family: "lato",sans-serif;
+	font-weight: 300;
 }
 
 li.emailAddress {
@@ -125,6 +203,8 @@ textarea.input {
 a.sendBtn {
 	border-radius: 10px;
 	background-color: #e74c3c;
+	font-size: 18px !important;
+	font-weight: 700;
 }
 
 a.sendBtn:hover {
@@ -213,6 +293,12 @@ a.addBtn {
 	border-radius: 10px;
 	background-color: #6cbddd;
 	width: 250px;
+	font-weight: 700;
+	font-size: 20px;
+}
+
+a.addBtn:hover, a.addBtn:active {
+	background-color: #6cbddd;
 }
 
 
@@ -225,8 +311,19 @@ span.reminderNumber {
 	margin-left: 12rem;
 	border: 1px solid #6cbddd;
 	border-radius: 50%;
-	padding: 5px 9px;
+	padding: 5px 13px;
 	color: #FFF;
+}
+
+.time {
+	font-family: 'Roboto Slab', serif;
+	font-weight: 700;
+	font-size: 18px;
+}
+
+.timeColor {
+	color: #e74c3c;
+	font-size: 20px;
 }
 
 div.reminderList {
@@ -238,13 +335,29 @@ div.reminderList {
 	width: 30px;
 }
 
-div.reminderTitle {
+p.reminderTitle {
+	font-family: "lato",sans-serif;
+	font-weight: 700;
+	font-size: 25px;
+}
 
+p.start, p.location, p.reminder {
+	font-family: "lato",sans-serif;
+	font-weight: 700;
+	font-size: 18px;
+}
+
+span.address {
+	font-family: 'Roboto Slab', serif;
+	font-weight: 700;
 }
 
 a.editBtn {
 	border-radius: 10px;
+	font-size: 18px !important;
+	font-weight: 700;
 	background-color: #6cbddd;
+	margin-top: 30px;
 }
 
 a.editBtn:hover {

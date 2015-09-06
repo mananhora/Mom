@@ -6,7 +6,7 @@ var flight = function(time, location) {
 }
 
 function listFlights() { //gets list of flights using gmail API
-    userId = "horamanan@gmail.com";
+    userId = "anas.ashraf.14@gmail.com";
     var flightquery = "+flight details AND after:2015/09/04";
 
     var getPageOfFlightMessages = function(request, result) {
