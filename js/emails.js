@@ -22,7 +22,6 @@ function listMessages() { //gets list of gmail messages
             result = result.concat(resp.messages);
 
             for (var i = 0; i < resp.messages.length; i++) {
-                //messages list = resp.messages
                 var id = resp.messages[i].id;
                 getMessage(userId, id, callback);
             }
@@ -88,7 +87,7 @@ function printList() {
 
     //FOR TESTING-keep until finished
     emailList[0].replyTime = "2pm tomorrow";
-    emailList[1].replyTime = "3pmday after tomorrow";
+    emailList[1].replyTime = "3pm day after tomorrow";
     emailList[2].replyTime = "4pm today"
     emailList[3].replyTime = "8pm tomorrow";
 }

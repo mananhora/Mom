@@ -12,7 +12,5 @@ function createReminder() {
     var endTime = $('#endTime');
     var reminder1 = new reminder(title, startTime, endTime);
     remindersList.push(reminder1);
-    $('#reminderslist').append(reminder1.title + "  "+reminder1.startTime+"    endTime: "+reminder1.endTime);
+    $('#reminderslist').append(reminder1.title + "  " + reminder1.startTime + "    endTime: " + reminder1.endTime);
 }
-
-
