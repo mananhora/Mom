@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="foundation/css/foundation.css" />
     <link rel="stylesheet" type="text/css" href="OurCSS/stylesheet.css">
     <script src="foundation/js/vendor/modernizr.js"></script>
+    <script src = "reminders.js"></script>
   </head>
   <body>
   <!-- LEFT FOLD -->
@@ -63,7 +64,7 @@
         <p class="title">Upcoming</p>
       </div>
       <!-- User Image -->
-      <div class="reminderList">
+      <div id= "reminderslist" class="reminderList">
         <div class="large-4 columns">
           <p>4:00 AM</p>
         </div>
@@ -117,7 +118,7 @@
     <!-- SET REMINDER MODAL -->
     <div id="addModal" class="reveal-modal" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
       <h2 id="firstModalTitle">Add a reminder</h2>
-      <p>Event Title<input type="text" placeholder="Event Title" /></p>
+      <p>Event Title<input type="text" id = "title" placeholder="Event Title" /></p>
       <p>Start Time<input type="time" id="startTime" name="startTime"></p>
       <p>Location<input type="text" id="endTime" name="endTime"></p>
       <ul class="reminderType">
