@@ -8,23 +8,19 @@ var flight = function(name, time, location) {
 
 function listFlights() { //gets list of flights using gmail API
     userId = $('#emailid').val();
-    var d = new Date(); //get current date
-    var n = d.getDate();
-    n = n - 2;
-    // var messagequery = "after:2015/09/03";
+    var flightquery = "+upcoming flight AND after:2015/09/04";
 
-    var flightquery = "+flight ticket";
     var getPageOfFlightMessages = function(request, result) {
-        request.execute(function(resp) {
-            result = result.concat(resp.messages);
-
-            for (var i = 0; i < resp.messages.length; i++) {
-                //messages list = resp.messages
-                var id = resp.messages[i].id;
-                getFlight(userId, id, callback);
+        request.execute(function(response) {
+            result = result.concat(response.messages);
+            console.log(response.result);
+            console.log(response.messages[0]);
+            for (var i = 0; i < response.messages.length; i++) {
+                var id = response.messages[i].id;
+                getFlight(userId, id, flightcallback);
             }
 
-            var nextPageToken = resp.nextPageToken;
+            var nextPageToken = response.nextPageToken;
             if (nextPageToken) {
                 request = gapi.client.gmail.users.messages.list({
                     'userId': userId,
@@ -34,8 +30,8 @@ function listFlights() { //gets list of flights using gmail API
                 getPageOfFlightMessages(request, result);
             } else {
                 console.log(flightslist.length);
-                console.log(flightslist);
-                console.log("error");
+                // console.log(flightslist);
+                // console.log("error");
 
             }
         });
@@ -57,11 +53,24 @@ function getFlight(userId, messageId, callback) { //get message-takes in email i
 }
 
 var flightcallback = function(data) { //callback function for getMessage()
-    console.log(data.result.snippet);
+    // console.log(data.result.snippet);
     var snippet = data.result.snippet;
+    // var message = data.result.payload.body.data;
+
+    console.log(snippet);
     var location = null;
     var time = null;
-    var name = null; //get name from google..
-    var flight = new flight(name, time, location);
-    flightslist.push(message);
+    var name = null; 
+    var flight1 = new flight(name, time, location);
+    flightslist.push(flight1);
+}
+
+
+function printFlightList() {
+    console.log("printFlightList  ");
+    for (var i = 0; i < flightslist.length; i++) {
+        console.log("printFlightList");
+        $('#emails_list').append(flightslist[i].name);
+    }
+
 }
