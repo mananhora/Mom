@@ -7,9 +7,6 @@ var email = function(replyTime, subject, name) { //EMAIL CLASS
 };
 
 
-
-
-
 function listMessages() { //gets list of gmail messages 
     // console.log("client id  " + CLIENT_ID);
     userId = $('#emailid').val(); //gets the email inputted by the user

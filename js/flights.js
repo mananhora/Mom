@@ -1,7 +1,6 @@
 var flightslist = [];
 
-var flight = function(name, time, location) {
-    this.name = name;
+var flight = function( time, location) {
     this.time = time;
     this.location = location;
 }
@@ -66,7 +65,7 @@ var flightcallback = function(data) { //callback function for getMessage()
 }
 
 
-function printFlightList() {
+function generateFlightList() {
     console.log("printFlightList  ");
     for (var i = 0; i < flightslist.length; i++) {
         console.log("printFlightList");

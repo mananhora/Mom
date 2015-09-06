@@ -8,7 +8,7 @@ function httpGet(theUrl) {
 }
 
 function sendDataTwilio() {
-
+    //SEND EMAIL DATA
     for (var i = 0; i < emailList.length; i++) {
 
         email = emailList[i]; //get email
@@ -18,13 +18,17 @@ function sendDataTwilio() {
             var time = email.replyTime;
             var name = "Manan";
             console.log("sendDataTwilio");
-
-            // var url = "mummy.mybluemix.net/email?name=" + name + "&subject=" + subject + "&time=" + time;
-            //"http://mummy.mybluemix.net/email?name=Fadi%26subject=cancel+adult+magazine+subscription%26time=tomorrow"
-
-            // "http://mummy.mybluemix.net/email?name=Fadi&subject=cancel+adult+magazine+subscription&time=tomorrow"
             var url = "http://mummy.mybluemix.net/email?name=Fadi&subject=" + subject + "&time=" + time;
             httpGet(url);
         }
+    }
+
+    //SEND FLIGHTS DATA
+    for (var i = 0; i < flightslist.length; i++) {
+        var time = flightslist[i].time;
+        var location = flightslist[i].location;
+        console.log("sendDataTwilio");
+        var url = "mummy.mybluemix.net/flight?name=Fadi&time=" + time + "&geo=" + location;
+        httpGet(url);
     }
 };

@@ -1,3 +1,4 @@
+//GMAIL API
 // Your Client ID can be retrieved from your project in the Google
 // Developer Console, https://console.developers.google.com
 var CLIENT_ID = '408469176032-2i4t8vgtgr3l0khfkv69v9djcc6g9hea.apps.googleusercontent.com';
@@ -74,7 +75,6 @@ function listLabels() {
             for (i = 0; i < labels.length; i++) {
                 var label = labels[i];
                 appendPre(label.name)
-
             }
         } else {
             appendPre('No Labels found.');
