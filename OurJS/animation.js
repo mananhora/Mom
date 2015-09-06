@@ -41,11 +41,11 @@ jQuery(document).ready(function() {
 
 		//Ajax calling
 		var toLoad = $(this).attr('href') + '#ajaxChange';
-		$('#ajaxChange').hide('fast', loadContent);
-		$('#ajaxAdd').remove();
-		$('#ajaxAdd').fadeIn('normal');
+		// $('#ajaxChange').hide('fast', loadContent);
+		// $('#ajaxAdd').remove();
+		// $('#ajaxAdd').fadeIn('normal');
 		function loadContent() {
-			$('#ajaxChange').load("http://localhost:8000/Documents/PennApps/Mom/reminder.html", showNewContent())
+			$('#ajaxChange').load("http://localhost:8000/Documents/PennApps/Mom/sample.html", showNewContent())
 		}
 		console.log('1');
 		function showNewContent() {

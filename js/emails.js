@@ -80,7 +80,6 @@ var callback = function(data) { //callback function for getMessage()
 }
 
 function printList() {
-    // console.log("emailList  " + emailList);
     for (var i = 0; i < emailList.length; i++) {
         // console.log(emailList[i].subject);
         $('#emails_list').append('<li>' + emailList[i].subject + '</li>');
@@ -88,6 +87,11 @@ function printList() {
     }
 
     //FOR TESTING-keep until finished
-    emailList[0].replyTime = "tomorrow";
-    emailList[1].replyTime = "day after tomorrow";
+    emailList[0].replyTime = "2pm tomorrow";
+    emailList[1].replyTime = "3pmday after tomorrow";
+    emailList[2].replyTime = "4pm today"
+    emailList[3].replyTime = "8pm tomorrow";
 }
+
+
+
