@@ -1,13 +1,13 @@
 var flightslist = [];
 
-var flight = function( time, location) {
+var flight = function(time, location) {
     this.time = time;
     this.location = location;
 }
 
 function listFlights() { //gets list of flights using gmail API
-    userId = $('#emailid').val();
-    var flightquery = "+upcoming flight AND after:2015/09/04";
+    userId = "horamanan@gmail.com";
+    var flightquery = "+flight details AND after:2015/09/04";
 
     var getPageOfFlightMessages = function(request, result) {
         request.execute(function(response) {
@@ -42,7 +42,7 @@ function listFlights() { //gets list of flights using gmail API
 }
 
 
-function getFlight(userId, messageId, callback) { //get message-takes in email id (userId) and messageId
+function getFlight(userId, messageId, flightcallback) { //get message-takes in email id (userId) and messageId
     var request = gapi.client.gmail.users.messages.get({
         'userId': userId,
         'id': messageId
@@ -51,24 +51,34 @@ function getFlight(userId, messageId, callback) { //get message-takes in email i
 }
 
 var flightcallback = function(data) { //callback function for getMessage()
-    // console.log(data.result.snippet);
+    console.log("FLIGHT callback")
+        // console.log(data.result.snippet);
     var snippet = data.result.snippet;
     // var message = data.result.payload.body.data;
 
-    console.log(snippet);
-    var location = null;
-    var time = null;
-    var name = null; 
-    var flight1 = new flight(name, time, location);
+    console.log("snippet" + snippet);
+    var m = snippet.search("FROM: ");
+    m = m + 6;
+    var n = snippet.search("TO: ");
+    n = n - 1;
+    var location = snippet.substring(m , n );
+
+    var t = snippet.search("AT: ");
+    t = t + 4;
+    var u = t + 10;
+    var time = snippet.substring(t, u);
+    var name = "MANAN";
+    var flight1 = new flight(time, location);
     flightslist.push(flight1);
 }
 
 
 function generateFlightList() {
-    console.log("printFlightList  ");
+    // console.log("printFlightList  ");
     for (var i = 0; i < flightslist.length; i++) {
-        console.log("printFlightList");
-        $('#emails_list').append(flightslist[i].name);
+        // console.log("printFlightList");
+        console.log(JSON.stringify(flightslist));
+        $('#emails_list').append('<li>'+"FLIGHT location: "+flightslist[i].location+"      Date/time:  "+flightslist[i].time+'</li>');
     }
 
 }

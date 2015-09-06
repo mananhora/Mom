@@ -36,7 +36,7 @@ function listMessages() { //gets list of gmail messages
                 });
                 getPageOfMessages(request, result);
             } else {
-                console.log(emailList.length);
+                // console.log(emailList.length);
 
                 console.log("error");
 
