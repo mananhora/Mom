@@ -13,7 +13,6 @@ function listFlights() { //gets list of flights using gmail API
         request.execute(function(response) {
             result = result.concat(response.messages);
             console.log(response.result);
-            console.log(response.messages[0]);
             for (var i = 0; i < response.messages.length; i++) {
                 var id = response.messages[i].id;
                 getFlight(userId, id, flightcallback);
