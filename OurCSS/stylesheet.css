@@ -1,8 +1,20 @@
 div.bgWrapper {
 	background-color: #2c3e50;
-	width: 510px;
+	width: 25%;
 	height: 100vh;
 	position: absolute;
+}
+
+div.leftContent {
+	padding-top: 5%;
+}
+
+div.ajaxChange {
+	color: #FFF;
+}
+
+img {
+	margin-bottom: 30px;
 }
 
 div.reminder {
@@ -17,12 +29,21 @@ span.emailNumber {
 	color: #FFF;
 }
 
+ul.linkList {
+	color: #FFF;
+}
+
 div.centerFold {
 	float: left !important;
 }
 
+span.signedIn {
+	margin-right: 5px;
+}
+
 li.userName {
 	margin-left: 18rem;
+	display: flex;
 }
 
 div.subTitle {
@@ -50,8 +71,41 @@ svg.replyReminder {
 	width: 36px;
 }
 
+li {
+	list-style: none;
+	margin-bottom: 20px;
+}
+
+a.composeBtn {
+	margin-top: 30px;
+	margin-bottom: 40px;
+	border-radius: 10px;
+	background-color: #e74c3c;
+	width: 250px;
+}
+
+a.composeBtn:hover {
+	background-color: #e74c3c;
+}
+
+div.stroke {
+	border-right: 2px solid #cdcdcd;
+	height: 80vh;
+	float: right;
+}
+
+li.top {
+	border-left: 10px solid #e74c3c;
+	padding-left: 20px;
+}
+
 li.emailAddress {
 	margin-left: 0;
+	display: flex;
+}
+
+li.emailAddress > a {
+	margin-left: 5px;
 }
 
 li.time {
@@ -68,6 +122,146 @@ textarea.input {
 	height: 100px;
 }
 
+a.sendBtn {
+	border-radius: 10px;
+	background-color: #e74c3c;
+}
+
+a.sendBtn:hover {
+	background-color: #e74c3c;
+}
+
 a.draftBtn {
 	margin-left: 1rem;
+	color: #e74c3c;
+}
+
+/*
+
+Set Reminder Modal
+
+*/
+
+#remindModal {
+	width: 20%;
+	padding-top: 3.125rem;
+}
+
+a.remindBtn {
+	border-radius: 10px;
+	background-color: #e74c3c !important;
+	color: #FFF !important;
+}
+
+input.userTime {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+#thanksModal {
+	width: 20%;
+	padding: 3.125rem;
+}
+
+#addModal {
+	width: 50%;
+}
+
+ul.reminderType {
+	margin-left: 0;
+}
+
+ul.reminderType > li {
+	display: inline-flex;
+}
+
+ul.reminderType > li:nth-child(3) {
+	margin-left: 30px;
+}
+
+ul.reminderType > li:nth-child(4) {
+	margin-left: 30px;
+}
+
+ul.reminderType > li > span {
+	margin-right: 15px;
+}
+
+#reminder-icon {
+	height: 30px;
+	width: 30px;
+}
+
+#meeting-icon {
+	height: 30px;
+	width: 30px;
+}
+
+#flight-icon {
+	height: 30px;
+	width: 30px;
+}
+/*
+
+REMINDER PAGE
+
+*/
+
+a.addBtn {
+	margin-top: 30px;
+	margin-bottom: 40px;
+	border-radius: 10px;
+	background-color: #6cbddd;
+	width: 250px;
+}
+
+
+li.reminderTop {
+	border-left: 10px solid #6cbddd;
+	padding-left: 20px;
+}
+
+span.reminderNumber {
+	margin-left: 12rem;
+	border: 1px solid #6cbddd;
+	border-radius: 50%;
+	padding: 5px 9px;
+	color: #FFF;
+}
+
+div.reminderList {
+	margin-top: 3rem;
+}
+
+#doneIcon {
+	height: 30px;
+	width: 30px;
+}
+
+div.reminderTitle {
+
+}
+
+a.editBtn {
+	border-radius: 10px;
+	background-color: #6cbddd;
+}
+
+a.editBtn:hover {
+	background-color: #6cbddd;
+}
+
+a.doneBtn {
+	margin-left: 1rem;
+	color: #6cbddd;
+	margin-top: 10px;
+}
+
+div.btnRow {
+	display: inline-flex;
+}
+
+div.btnRow > svg {
+	margin-left: 20px;
+	margin-top: 6px;
 }
