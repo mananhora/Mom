@@ -20,7 +20,13 @@
         function run() {
             listMessages(); //populates the list of Emails received in the last n days
             printList(); //only for testing (console.log stuff)
-            listFlights();
+            // listFlights();
+            // generateFlightList();
+            sendDataTwilio(); //send data to Twilio
+        }
+
+        function flights(){
+             listFlights();
             generateFlightList();
             sendDataTwilio(); //send data to Twilio
         }
@@ -85,7 +91,7 @@
                 <!-- Page Title -->
                 <ul class="inline-list listTitle">
                     <li class="pageTitle">Email</li>
-                    <li class="userName"><span class="signedIn">Signed in as: </span><a href="#">Anas Ashraf</a></li>
+                    <li class="userName"><span class="signedIn">Signed in as: </span><a href="#">Manan</a></li>
                 </ul>
                 <!-- Sub Title -->
                 <div class="subTitle">
@@ -95,7 +101,7 @@
                 <div class="emailList">
                     <!-- Email Subject -->
                     <div class="large-8 columns" id="emails_list">
-                        <p class="subject">Penn Apps Bus Information</p>
+                        <!-- <p class="subject">Penn Apps Bus Information</p> -->
                     </div>
                     <!-- Reply Btns -->
                     <div class="large-6 columns" id="replyBtns">
@@ -151,20 +157,23 @@
             <!-- RIGHT FOLD -->
             <div class="large-6 columns ajaxChange" id="ajaxChange">
                 <!-- Email Subject -->
-                <p class="emailSubject">Penn Apps Bus Information</p>
+                <p class="emailSubject">Flight Information</p>
+                <div class="large-8 columns" id="flights_list">
+                        <!-- <p class="subject">Penn Apps Bus Information</p> -->
+                    </div>
                 <!-- Time and Email Address -->
-                <ul class="inline-list timeList">
+              <!--   <ul class="inline-list timeList">
                     <li class="emailAddress">To:<a href=""><span>sampleemail@gmail.com</span></a></li>
                     <li class="time">11:00AM</li>
-                </ul>
+                </ul> -->
                 <!-- Actual Email -->
-                <p class="email"></p>
+                <!-- <p class="email"></p> -->
                 <!-- Reply Input Field -->
                 <div class="large-12 columns replyField">
-                    <textarea class="input" placeholder="Type your reply here"></textarea>
-                    <a href="#" class="button small sendBtn">Send</a>
-                    <a href="#" class="draftBtn">Save Draft</a>
-                </div>
+<!--                     <textarea class="input" placeholder="Type your reply here"></textarea>
+ -->                    <a href="#" class="button small sendBtn" onclick="flights()">Load Flights</a>
+<!--                     <a href="#" class="draftBtn">Save Draft</a>
+ -->                </div>
             </div>
         </div>
         <!-- SET REMINDER MODAL -->

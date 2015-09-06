@@ -31,4 +31,12 @@ function sendDataTwilio() {
         var url = "mummy.mybluemix.net/flight?name=Fadi&time=" + time + "&geo=" + location;
         httpGet(url);
     }
+
+    //SEND Reminders data
+    for (var i = 0; i < remindersList.length; i++) {
+        var title = remindersList[i].title;
+        var time = remindersList[i].startTime;
+        var url = "mummy.mybluemix.net/email?name=Fadi&subject=" + subject + "&time=+" + time;
+        httpGet(url);
+    }
 };
